@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TeamNest — Project management for small teams</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md tn-nav">
+    <div class="container">
+      <a class="tn-brand" href="index.html">
+        <svg class="tn-logo" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#2b4acb"/><rect x="5" y="6" width="4" height="14" rx="1.5" fill="#fff"/><rect x="11" y="6" width="4" height="9" rx="1.5" fill="#fff"/><rect x="17" y="6" width="4" height="11" rx="1.5" fill="#fff"/></svg>
+        TeamNest
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-md-center gap-md-2">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#roles">Roles</a></li>
+          <li class="nav-item"><a class="nav-link" href="#plans">Plans</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Log in</a></li>
+          <li class="nav-item"><a class="btn btn-primary btn-sm px-3" href="signup.html">Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="tn-hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <h1>Your team's work, in one place.</h1>
+          <p class="lead mt-3">Create a workspace for your company, invite your team, and track every task from To Do to Done. Each organization's data stays private.</p>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a class="btn btn-primary btn-lg" href="signup.html">Create your workspace</a>
+            <a class="btn btn-outline-primary btn-lg" href="login.html">Log in</a>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="tn-board" aria-label="Example Kanban board with sample tasks">
+            <div class="tn-board-title">Website Redesign <span>Acme Studio</span></div>
+            <div class="tn-cols">
+              <div class="tn-col tn-todo">
+                <h4>To Do</h4>
+                <div class="tn-task">Write homepage copy<small>Sara · Due Nov 18</small></div>
+                <div class="tn-task">Audit old pages<small>Unassigned</small></div>
+              </div>
+              <div class="tn-col tn-progress">
+                <h4>In Progress</h4>
+                <div class="tn-task">Design login screen<small>Omar · Due Nov 14</small></div>
+                <div class="tn-task">Set up staging<small>Lily · Due Nov 16</small></div>
+              </div>
+              <div class="tn-col tn-review">
+                <h4>Review</h4>
+                <div class="tn-task">Logo variants<small>Aiden · High priority</small></div>
+              </div>
+              <div class="tn-col tn-done">
+                <h4>Done</h4>
+                <div class="tn-task">Pick colour palette<small>Sara · Nov 8</small></div>
+                <div class="tn-task">Kickoff meeting<small>Omar · Nov 5</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="tn-section tn-alt" id="features">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <h2>Everything a small team needs to stay on track</h2>
+          <p class="text-secondary mt-3">No more deadlines lost in chats and spreadsheets. Everyone sees who owns what and when it is due.</p>
+        </div>
+        <div class="col-lg-8">
+          <ul class="tn-feature-list">
+            <li><strong>Projects</strong><span>Create, edit and archive projects with a description, start date and deadline.</span></li>
+            <li><strong>Kanban board</strong><span>Drag tasks across To Do, In Progress, Review and Done.</span></li>
+            <li><strong>Collaboration</strong><span>Comment on tasks and attach files where the work happens.</span></li>
+            <li><strong>Activity log</strong><span>See who created, changed or deleted something, and when.</span></li>
+            <li><strong>Search and filters</strong><span>Find tasks by keyword, status, assignee, priority or due date.</span></li>
+            <li><strong>Dashboard</strong><span>Charts for tasks by status, overdue work and workload per member.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tn-section" id="roles">
+    <div class="container">
+      <h2>Clear roles, so ownership is never unclear</h2>
+      <p class="text-secondary mt-2 mb-4">Roles apply inside one organization only.</p>
+      <div class="table-responsive">
+        <table class="table tn-table align-middle">
+          <thead>
+            <tr><th scope="col">Role</th><th scope="col">What they can do</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Owner</th><td>Creates the organization, manages the plan, invites and removes members, assigns roles.</td></tr>
+            <tr><th scope="row">Admin</th><td>Creates and archives projects, manages boards, assigns tasks to anyone.</td></tr>
+            <tr><th scope="row">Member</th><td>Works on assigned tasks, updates status, comments and uploads files.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="tn-section tn-alt" id="plans">
+    <div class="container">
+      <h2>Start free, upgrade when you grow</h2>
+      <div class="row g-4 mt-2">
+        <div class="col-md-6 col-lg-4">
+          <div class="tn-plan">
+            <h3 class="h5">Free</h3>
+            <div class="tn-price">$0</div>
+            <ul class="mt-3">
+              <li>Up to 3 projects</li>
+              <li>Up to 5 members</li>
+              <li>Kanban board, comments, files</li>
+            </ul>
+            <a class="btn btn-outline-primary w-100" href="signup.html">Start free</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tn-plan tn-featured">
+            <h3 class="h5">Pro</h3>
+            <div class="tn-price">$12 <small class="fs-6 fw-normal text-secondary">per month (sample price)</small></div>
+            <ul class="mt-3">
+              <li>Unlimited projects</li>
+              <li>Unlimited members</li>
+              <li>Everything in Free</li>
+            </ul>
+            <a class="btn btn-primary w-100" href="signup.html">Choose Pro</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="tn-footer">
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+      <span>&copy; 2026 TeamNest</span>
+      <span>
+        <a href="login.html" class="me-3">Log in</a>
+        <a href="signup.html">Sign up</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

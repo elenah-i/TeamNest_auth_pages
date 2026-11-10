@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — TeamNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar tn-nav">
+    <div class="container">
+      <a class="tn-brand" href="index.html">
+        <svg class="tn-logo" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#2b4acb"/><rect x="5" y="6" width="4" height="14" rx="1.5" fill="#fff"/><rect x="11" y="6" width="4" height="9" rx="1.5" fill="#fff"/><rect x="17" y="6" width="4" height="11" rx="1.5" fill="#fff"/></svg>
+        TeamNest
+      </a>
+      <a class="btn btn-outline-primary btn-sm px-3" href="signup.html">Sign up</a>
+    </div>
+  </nav>
+
+  <main class="tn-auth">
+    <div class="tn-auth-card">
+      <h1>Log in to your workspace</h1>
+      <p class="text-secondary">Use the email and password you registered with.</p>
+
+      <div id="message" role="alert" class="alert alert-danger d-none"></div>
+
+      <form id="loginForm" novalidate>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="Email" autocomplete="email" required>
+          <div class="invalid-feedback">Enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <label for="password" class="form-label">Password</label>
+            <a href="#" class="small">Forgot password?</a>
+          </div>
+          <input type="password" class="form-control" id="password" name="Password" autocomplete="current-password" required>
+          <div class="invalid-feedback">Enter your password.</div>
+        </div>
+
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="remember" name="RememberMe">
+          <label class="form-check-label" for="remember">Keep me logged in</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2">Log in</button>
+      </form>
+
+      <p class="text-center mt-4 mb-3">New to TeamNest? <a href="signup.html">Create an account</a></p>
+
+      <p class="tn-demo-note mb-0">Demo only: nothing is sent to a server. Try <strong>demo@teamnest.test</strong> / <strong>Password1</strong> to see the success state; anything else shows an error.</p>
+    </div>
+  </main>
+
+  <script>
+    // Static demo only. Real authentication will be ASP.NET Core Identity on the server.
+    const form = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      message.className = "alert d-none";
+      form.classList.add("was-validated");
+      if (!form.checkValidity()) return;
+
+      const email = form.email.value.trim().toLowerCase();
+      const password = form.password.value;
+      if (email === "demo@teamnest.test" && password === "Password1") {
+        message.textContent = "Logged in. The dashboard will open here once it exists.";
+        message.className = "alert alert-success";
+      } else {
+        message.textContent = "Email or password is incorrect. Check both and try again.";
+        message.className = "alert alert-danger";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign up — TeamNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar tn-nav">
+    <div class="container">
+      <a class="tn-brand" href="index.html">
+        <svg class="tn-logo" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#2b4acb"/><rect x="5" y="6" width="4" height="14" rx="1.5" fill="#fff"/><rect x="11" y="6" width="4" height="9" rx="1.5" fill="#fff"/><rect x="17" y="6" width="4" height="11" rx="1.5" fill="#fff"/></svg>
+        TeamNest
+      </a>
+      <a class="btn btn-outline-primary btn-sm px-3" href="login.html">Log in</a>
+    </div>
+  </nav>
+
+  <main class="tn-auth">
+    <div class="tn-auth-card">
+      <h1>Create your account</h1>
+      <p class="text-secondary">Start a new organization, or join your team with an invite code.</p>
+
+      <div id="message" role="alert" class="alert alert-success d-none"></div>
+
+      <form id="signupForm" novalidate>
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full name</label>
+          <input type="text" class="form-control" id="fullName" name="FullName" autocomplete="name" required minlength="2">
+          <div class="invalid-feedback">Enter your full name.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="Email" autocomplete="email" required>
+          <div class="invalid-feedback">Enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="Password" autocomplete="new-password" required minlength="8" pattern="(?=.*\d)(?=.*[A-Za-z]).{8,}">
+          <div class="form-text">At least 8 characters, with a letter and a number.</div>
+          <div class="invalid-feedback">Use at least 8 characters, including a letter and a number.</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="confirmPassword" class="form-label">Confirm password</label>
+          <input type="password" class="form-control" id="confirmPassword" name="ConfirmPassword" autocomplete="new-password" required>
+          <div class="invalid-feedback">Passwords do not match.</div>
+        </div>
+
+        <fieldset class="mb-3">
+          <legend class="form-label fs-6">How do you want to get started?</legend>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="JoinMode" id="modeCreate" value="create" checked>
+            <label class="form-check-label" for="modeCreate">Create a new organization (you become the Owner)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="JoinMode" id="modeJoin" value="join">
+            <label class="form-check-label" for="modeJoin">I have an invite code (you join as a Member)</label>
+          </div>
+        </fieldset>
+
+        <div class="mb-4" id="orgField">
+          <label for="orgName" class="form-label">Organization name</label>
+          <input type="text" class="form-control" id="orgName" name="OrganizationName" placeholder="Acme Studio" required minlength="2">
+          <div class="invalid-feedback">Enter a name for your organization.</div>
+        </div>
+
+        <div class="mb-4 d-none" id="codeField">
+          <label for="inviteCode" class="form-label">Invite code</label>
+          <input type="text" class="form-control" id="inviteCode" name="InviteCode" placeholder="e.g. ACME-4F7K" pattern="[A-Za-z0-9\-]{6,}">
+          <div class="invalid-feedback">Enter the invite code you received (at least 6 characters).</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2">Create account</button>
+      </form>
+
+      <p class="text-center mt-4 mb-3">Already have an account? <a href="login.html">Log in</a></p>
+
+      <p class="tn-demo-note mb-0">Demo only: nothing is saved or sent to a server.</p>
+    </div>
+  </main>
+
+  <script>
+    // Static demo only. Real validation must be repeated on the server (ASP.NET Core Identity + model validation).
+    const form = document.getElementById("signupForm");
+    const message = document.getElementById("message");
+    const orgField = document.getElementById("orgField");
+    const codeField = document.getElementById("codeField");
+    const orgName = document.getElementById("orgName");
+    const inviteCode = document.getElementById("inviteCode");
+
+    function updateMode() {
+      const joining = form.JoinMode.value === "join";
+      orgField.classList.toggle("d-none", joining);
+      codeField.classList.toggle("d-none", !joining);
+      orgName.required = !joining;
+      inviteCode.required = joining;
+    }
+    form.querySelectorAll('input[name="JoinMode"]').forEach(function (r) {
+      r.addEventListener("change", updateMode);
+    });
+    updateMode();
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      message.classList.add("d-none");
+
+      const confirm = form.confirmPassword;
+      confirm.setCustomValidity(confirm.value === form.password.value ? "" : "Passwords do not match.");
+
+      form.classList.add("was-validated");
+      if (!form.checkValidity()) return;
+
+      const role = form.JoinMode.value === "join" ? "Member" : "Owner";
+      message.textContent = "Account created (demo). You would join as " + role + " and land on your dashboard.";
+      message.classList.remove("d-none");
+    });
+  </script>
+</body>
+</html>
